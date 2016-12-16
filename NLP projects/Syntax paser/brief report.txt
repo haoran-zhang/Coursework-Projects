@@ -1,0 +1,7 @@
+NLP Project 1 Report
+
+The method I used for the project is transition-based dependency parsing. By specific modifying the transitionparse.py file from nltk library, for example  I replaced the oringinal SVM classifier with Perceptron to get more efficiency, and add more features including quadratic features in order to get higher performance. The result seems pretty good, with the standard parse tree which pointed out where empty nodes is. Numerically, I totally extract 1.06 million features from trn.ec. The trained model is around 380MB, and the prediction time of single sentence is around 10s. I tested a few sentences of dev.ec turn out to be identical to the answer.
+
+I tried to implement empty nodes detection, like extracting features according to the paper and trying to use perceptron to predict. However, it turns out to be a failure. The main reason I think is the ec training is too skewed. In order to  predict a skewed ec, I need to collecting more features. However, with increasing the features, my small RAM raises MemoryError. With poor result, I give up to predict ec.
+
+I haven't predict the tst_with_ec in the updated file, instead, I predict the tst.ec in the original zip file. I'd like to predict the tst_with_ec with a little more time. 

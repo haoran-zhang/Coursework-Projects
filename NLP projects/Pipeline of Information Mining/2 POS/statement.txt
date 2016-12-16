@@ -1,0 +1,20 @@
+Operating Environment£ºpython 2.7£¬numpy
+
+Content£º
+	pos.py£ºcount every word-tag relationship in training set
+
+	count2and3.py£ºcompute the appearence of tag-tag and tag-tag-tag
+
+	listing.py : compute the 3-gram matrix of all possible p(v|w,u) combination, and 2-gram matrix of p(x|v)  (which v,w,u are tags and x are specific word )  and save it in actual file to save computing complexity
+
+	main.py :load every intermedia-result computed before,  take in tst.wrd and pass sentences to viterbi algorithm
+	
+	£¨PLEASE CHANGE FILE DIRECTORY BEFORE RUNNING £©
+
+
+By using viterbi algorithm and 3-gram HMM, this program can reach 92.4% accuracy in dev.wrd
+
+I also use stupid backoff , concretely replacing p(v|w,u) by 0.4*p(v|w) if the former one equal to zero
+
+I also write 4 features to determine which pos to use when a word never seen in training set . First, if the word containing 4 words , assert it to be chengyu . Second, if the word containg 3 words, assert it to be NR. Third, if the word beginning with last name, assert it to be names. Forth, if the word begining with numbers, assert it to be numbers. Else cases, give 0.4 score to NN, 0.6 score to NR, and 0.6 score to VV
+
